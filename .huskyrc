@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-push": "yarn docz:build"
+    "pre-commit": "yarn docz:build"
   }
 }
