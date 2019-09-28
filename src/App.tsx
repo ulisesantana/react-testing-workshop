@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import {NewMessageForm} from './components/NewMessageForm';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-
+      <NewMessageForm/>
     </div>
   );
 };
