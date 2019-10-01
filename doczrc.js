@@ -1,4 +1,5 @@
 export default {
+  base: '/react-testing-workshop/',
   src: 'src/docs',
   dest: 'docs',
   title: "Testing with React",
