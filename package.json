@@ -16,8 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "cypress:open": "cypress open",
-    "docz:dev": "rm -rf .docz && docz dev",
-    "docz:build": "docz build",
+    "docz:dev": "export NODE_ENV=development && rm -rf .docz && docz dev",
+    "docz:build": "export NODE_ENV=production && rm -rf docs && docz build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
