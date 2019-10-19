@@ -1,14 +1,12 @@
-import {AssetForm} from "../components/Forms/AssetForm";
 import {Segment} from "semantic-ui-react";
 import React, {FC, MouseEventHandler, useState} from "react";
 import {Asset, Store, TransferRecord} from "../types";
 import {Action, Actions} from "../store";
-import {BackButton, Data, Flex, TransferRecordTable, AssetTable} from "../components";
+import {BackButton, Data, Flex, TransferRecordTable, AssetForm, AssetTable} from "../components";
 
 export interface AssetCRUDProps extends Store {
   dispatch: (x: Action) => void
 }
-
 
 function filterTransferRecords(id: string) {
   return ({asset}: TransferRecord) => asset === id;

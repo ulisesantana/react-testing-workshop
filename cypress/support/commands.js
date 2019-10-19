@@ -14,7 +14,6 @@
 //
 //
 // -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
 //
 //
 // -- This is a dual command --
@@ -23,3 +22,8 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+const data = require("../fixtures/data.mock.json");
+Cypress.Commands.add("loadAppAndMockData", () => {
+  cy.visit("http://localhost:3000");
+  window.localStorage.setItem("bizenter@store", data);
+});

@@ -5,9 +5,3 @@ export const store: Store = {
   holders: {},
   records: []
 } as Store;
-
-export const storeMock: Store = {
-  assets: {},
-  holders: {},
-  records: []
-};

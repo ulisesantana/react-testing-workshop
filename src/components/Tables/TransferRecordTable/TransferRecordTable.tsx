@@ -23,13 +23,13 @@ export const TransferRecordTable: FC<TransferRecordTableProps> = ({holders, asse
 
     <Table.Body>
       { records.map(({id, asset, date, from, to, observations}) =>
-        <Table.Row key={id} data-id={id}>
-          <Table.Cell>{date}</Table.Cell>
-          <Table.Cell>{assets[asset].name}</Table.Cell>
-          <Table.Cell>{assets[asset].serial}</Table.Cell>
-          <Table.Cell>{ holders[from as string] && holders[from as string].name}</Table.Cell>
-          <Table.Cell>{ holders[to as string] && holders[to as string].name}</Table.Cell>
-          <Table.Cell>{observations}</Table.Cell>
+        <Table.Row key={id} data-id={id} data-testid={id}>
+          <Table.Cell data-testid="date">{date}</Table.Cell>
+          <Table.Cell data-testid="name">{assets[asset].name}</Table.Cell>
+          <Table.Cell data-testid="serial">{assets[asset].serial}</Table.Cell>
+          <Table.Cell data-testid="from">{ holders[from as string] && holders[from as string].name}</Table.Cell>
+          <Table.Cell data-testid="to">{ holders[to as string] && holders[to as string].name}</Table.Cell>
+          <Table.Cell data-testid="observations">{observations}</Table.Cell>
         </Table.Row>
       )}
     </Table.Body>
