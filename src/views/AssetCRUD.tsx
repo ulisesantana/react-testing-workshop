@@ -64,14 +64,14 @@ export const AssetCRUD: FC<AssetCRUDProps> = ({assets, holders, records, dispatc
     :
     <>
       <Flex alignContent="between">
-        <AssetForm holders={holders} onSubmit={onSubmit}/>
+        <AssetForm data-testid="assets-form" holders={holders} onSubmit={onSubmit}/>
         <Data
           icon="warehouse"
           data={Object.keys(assets).length}
           kpi={'Total Assets'}
         />
       </Flex>
-     <AssetTable
+     <AssetTable 
       assets={assets}
       holders={holders}
       onClick={onClickAsset}

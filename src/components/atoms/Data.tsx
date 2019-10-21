@@ -9,7 +9,7 @@ interface DataWithIconProps {
 }
 
 export const Data: FC<DataWithIconProps> = ({icon, data, kpi, size}) => (
-  <Statistic size={size || 'small'}>
+  <Statistic size={size || 'small'} data-testid="kpi">
     <Statistic.Value>
       {!!icon && <Icon name={icon} />}
       <span style={{marginLeft: !!icon ? '8px': '0'}}>

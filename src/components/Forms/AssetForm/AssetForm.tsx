@@ -3,8 +3,8 @@ import {Asset, Holder} from "../../../types";
 import {Button, Form, Icon} from "semantic-ui-react";
 import {onChangeFormFieldHandler, toOptions} from "../../../utils";
 import {TransferPayload} from "../../../store";
-import {FormButton} from "../../FormButton";
-import {Modal} from "../../Modal";
+import {FormButton} from "../../atoms/FormButton";
+import {Modal} from "../../atoms/Modal";
 
 export interface AssetFormProps {
   asset?: Asset,
@@ -69,23 +69,26 @@ export class AssetForm extends Component<AssetFormProps, AssetFormState> {
       <Modal
         title={`${this.editMode ? 'Edit' : 'Add'} Asset`}
         cta={
-          <Button color={this.editMode ? undefined : 'green'}>
+          <Button data-testid="open-asset-form-button" color={this.editMode ? undefined : 'green'}>
             <Icon name={this.editMode ? 'edit' : 'plus'}/>
             {`${this.editMode ? 'Edit' : 'Add'} Asset`}
           </Button>
         }
       >
-        <Form onSubmit={this.onSubmit}>
+        <Form data-testid="asset-form" onSubmit={this.onSubmit}>
           <Form.Input
             name="name"
+            data-testid="name"
             value={this.state.name}
             required
+            pattern="[A-z0-9]"
             onChange={this.onChangeHandler}
             placeholder='Full Name'
             label='Full Name'
           />
           <Form.TextArea
             name="notes"
+            data-testid="notes"
             value={this.state.notes}
             onChange={this.onChangeHandler}
             placeholder='Observations'
@@ -93,13 +96,16 @@ export class AssetForm extends Component<AssetFormProps, AssetFormState> {
           />
           <Form.Checkbox
             name="blocked"
+            data-testid="blocked"
             checked={this.state.blocked}
             onChange={this.onChangeHandler}
             label='Blocked'
           />
           <Form.Input
             name="serial"
+            data-testid="serial"
             required
+            pattern="[A-z0-9]"
             value={this.state.serial}
             onChange={this.onChangeHandler}
             placeholder='LHG1L451G6L1GL41'
@@ -108,6 +114,7 @@ export class AssetForm extends Component<AssetFormProps, AssetFormState> {
           <Form.Select
             fluid
             name="assignedTo"
+            data-testid="assignedTo"
             label='Holder'
             options={this.options}
             placeholder='Holder'
@@ -119,13 +126,14 @@ export class AssetForm extends Component<AssetFormProps, AssetFormState> {
             this.props.asset.assignedTo !== this.state.assignedTo &&
             <Form.TextArea
               name="observations"
+              data-testid="observations"
               value={this.state.observations}
               onChange={this.onChangeHandler}
               placeholder='Transfer observations'
               label='Transfer observations'
             />
           }
-          <FormButton editMode={this.editMode}/>
+          <FormButton data-testid="assets-form-submit" editMode={this.editMode} onClick={this.onSubmit}/>
         </Form>
       </Modal>
     )

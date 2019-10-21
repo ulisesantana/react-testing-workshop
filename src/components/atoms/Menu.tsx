@@ -1,4 +1,4 @@
-import {Section, SectionHandlers} from "../utils";
+import {Section, SectionHandlers} from "../../utils";
 import React, {FC} from "react";
 import {Icon, Menu as MenuSemantic} from "semantic-ui-react";
 

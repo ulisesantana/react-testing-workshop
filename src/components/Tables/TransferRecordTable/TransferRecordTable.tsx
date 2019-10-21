@@ -9,15 +9,15 @@ export interface TransferRecordTableProps {
 }
 
 export const TransferRecordTable: FC<TransferRecordTableProps> = ({holders, assets, records}) => (
-  <Table celled selectable>
+  <Table celled selectable data-testid="records-table">
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell>Date</Table.HeaderCell>
-        <Table.HeaderCell>Asset</Table.HeaderCell>
-        <Table.HeaderCell>Asset Serial</Table.HeaderCell>
-        <Table.HeaderCell>From</Table.HeaderCell>
-        <Table.HeaderCell>To</Table.HeaderCell>
-        <Table.HeaderCell>Notes</Table.HeaderCell>
+        <Table.HeaderCell data-testid="date">Date</Table.HeaderCell>
+        <Table.HeaderCell data-testid="name">Asset</Table.HeaderCell>
+        <Table.HeaderCell data-testid="serial">Asset Serial</Table.HeaderCell>
+        <Table.HeaderCell data-testid="from">From</Table.HeaderCell>
+        <Table.HeaderCell data-testid="to">To</Table.HeaderCell>
+        <Table.HeaderCell data-testid="observations">Notes</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
