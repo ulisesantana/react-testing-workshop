@@ -22,7 +22,7 @@ function reducer(state: Store, {type, payload}: Action): Store {
     case Actions.UPSERT_ASSET:{
       const id = (payload as Asset).id || uuid();
       if ((payload as TransferRecord).hasOwnProperty('from')) {
-        const {from, to: assignedTo, observations} = payload as TransferRecord;
+        const {from, to: assignedTo, observations, ...rest} = payload as TransferRecord;
         return {
           ...state,
           records: state.records.concat(
@@ -30,7 +30,7 @@ function reducer(state: Store, {type, payload}: Action): Store {
             ),
           assets: {
             ...state.assets,
-            [id]: generateAsset({id, assignedTo, ...payload})
+            [id]: generateAsset({id, assignedTo, ...rest})
           }
         };
       } else {

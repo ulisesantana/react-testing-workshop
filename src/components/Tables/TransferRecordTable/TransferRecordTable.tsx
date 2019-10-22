@@ -1,5 +1,5 @@
-import React, {FC} from "react";
-import {Table} from "semantic-ui-react";
+import React, {FC, useState, SyntheticEvent} from "react";
+import {Table, SearchProps, Search} from "semantic-ui-react";
 import {Asset, Holder, TransferRecord} from "../../../types";
 
 export interface TransferRecordTableProps {
@@ -30,11 +30,22 @@ function generateRecordParser(assets: Record<string, Asset>, holders: Record<str
   });
 }
 
+function filterResults(filter: string = '', results: TableRecord[]){
+  return !!filter 
+    ? results.filter(r => Object.values(r).some(x => !!x && ~x.search(new RegExp(filter, 'i'))))
+    : results;
+}
+
 export const TransferRecordTable: FC<TransferRecordTableProps> = ({holders, assets, records}) => {
   const tableRecords = records.map(generateRecordParser(assets, holders));
+  const [results, setResults] = useState(tableRecords);
+  const onChangeHandler: (e: SyntheticEvent, data: SearchProps) => void = (event, {value}) => {
+      setResults(filterResults(value, tableRecords));
+  };
 
   return (
     <section>
+      <Search onSearchChange={onChangeHandler} placeholder="Search" showNoResults={false}/>  
       <Table celled selectable data-testid="records-table">
       <Table.Header>
         <Table.Row>
@@ -47,8 +58,8 @@ export const TransferRecordTable: FC<TransferRecordTableProps> = ({holders, asse
         </Table.Row>
       </Table.Header>
   
-      <Table.Body>
-        { tableRecords.map(({id, assetName, assetSerial, date, from, to, observations}) =>
+      <Table.Body data-testid="records-table-body">
+        { results.map(({id, assetName, assetSerial, date, from, to, observations}) =>
           <Table.Row key={id} data-id={id} data-testid={id}>
             <Table.Cell data-testid="date">{date}</Table.Cell>
             <Table.Cell data-testid="name">{assetName}</Table.Cell>
