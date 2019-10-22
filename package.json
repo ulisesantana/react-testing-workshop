@@ -41,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.1.2",
     "@testing-library/react": "^9.1.4",
     "cypress": "^3.4.1",
     "docz": "^2.0.0-rc.45",
