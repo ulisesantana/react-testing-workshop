@@ -1,9 +1,9 @@
 export default {
-  base: '/react-testing-workshop/',
-  src: 'src/docs',
-  dest: 'docs',
+  base: "/react-testing-workshop/",
+  src: "src/docs",
+  dest: "docs",
   title: "Testing with React",
-  description: "React workshop for testing",
+  description: "Taller de Pruebas con React",
   repository: "https://github.com/ulisesantana/react-testing-workshop",
-  ordering: "ascending",
+  ordering: "ascending"
 };
