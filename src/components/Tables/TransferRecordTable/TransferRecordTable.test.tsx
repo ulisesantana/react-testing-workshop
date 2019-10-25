@@ -1,12 +1,12 @@
 import React from "react";
 import { mockStore } from "../../../store/data";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, fireEvent, cleanup, RenderResult } from "@testing-library/react";
 import { TransferRecordTable } from ".";
 import "@testing-library/jest-dom/extend-expect";
 
 describe("<TransferRecordTable />", () => {
-  let t: any;
-
+  let t: RenderResult;
+ 
   afterEach(cleanup);
 
   describe("User can search through transfer records", () => {
